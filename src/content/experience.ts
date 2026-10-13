@@ -13,7 +13,7 @@ export const roles: Role[] = [
       "Own the frontend of the group's two live platforms, heliumpark.ir and yekta-group.com, serving four entertainment venues across Mashhad and Tehran.",
     highlights: [
       'Delivered the full customer booking journey on heliumpark.ir: ticket and package purchase, VIP membership, events and group reservations, OTP login with automatic token refresh, and online payment with invoice tracking.',
-      'Lead invoicing and reservation work across two internal admin panels totalling 131 screens and 10 role-scoped workspaces for the cashier, coffee shop, accounting, support and management reporting teams.',
+      'Lead invoicing and reservation work across two internal admin panels totalling 131 screens and 10 role-scoped workspaces for the cashier, coffee shop, accounting, support and management reporting teams; one of them runs live as the group ERP at erp.heliumpark.ir.',
       'Designed and built a TypeScript, Express and SQL Server backend of 42 modules and 258 REST endpoints for internal task and document management — module architecture, a 50-permission RBAC model, real-time updates over server-sent events and encrypted attachments.',
     ],
     stack: [

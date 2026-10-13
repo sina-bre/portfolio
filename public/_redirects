@@ -1,0 +1,5 @@
+# Deep links load the app shell. Cloudflare treats a rule that proxies to
+# index.html as an infinite loop, so the build emits a copy as spa.html.
+/works        /spa  200
+/works/*      /spa  200
+/experience   /spa  200

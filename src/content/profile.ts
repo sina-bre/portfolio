@@ -42,7 +42,7 @@ export const education: Education[] = [
 export const currentFocus = {
   title: 'Right now: two live platforms at',
   highlight: 'Yekta Group',
-  body: 'I joined Yekta Group in October 2025. I own the frontend of heliumpark.ir and yekta-group.com, lead invoicing and reservation work across the internal admin panels, and designed the backend that runs task and document management — while finishing an MSc in Software Engineering.',
+  body: 'I joined Yekta Group in October 2025. I own the frontend of heliumpark.ir and yekta-group.com, lead invoicing and reservation work across the internal admin panels, including the ERP live at erp.heliumpark.ir, and designed the backend that runs task and document management — while finishing an MSc in Software Engineering.',
   role: 'Front-End Developer',
   since: 'October 2025',
 }

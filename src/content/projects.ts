@@ -46,7 +46,7 @@ export const projects: Project[] = [
   {
     slug: 'yekta-panel',
     title: 'Yekta Panel',
-    tagline: 'Invoicing and reservations admin',
+    tagline: 'Invoicing and reservations ERP',
     category: 'Internal tool',
     company: 'Yekta Group',
     year: '2025 – Present',
@@ -54,8 +54,9 @@ export const projects: Project[] = [
     scale: '55 screens',
     url: 'https://erp.heliumpark.ir',
     summary:
-      'The admin panel behind invoicing and reservations, organised into role-scoped workspaces for the teams who use it every day.',
+      'The ERP behind invoicing and reservations, live at erp.heliumpark.ir and organised into role-scoped workspaces for the teams who use it every day.',
     highlights: [
+      'Live in production as the group ERP at erp.heliumpark.ir',
       'Invoicing and reservation flows',
       'Role-scoped navigation instead of one permission-heavy menu',
       'Data tables and reporting charts',

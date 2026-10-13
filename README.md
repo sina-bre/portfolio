@@ -97,8 +97,15 @@ The site animates a lot, so every animation is built to stay cheap:
 
 ## Deployment
 
-It's a static single-page app. Deploy `dist/` anywhere, with every unknown path rewritten to
-`index.html` so deep links such as `/works/helium-park` load the app.
+Live at **https://dev.sinabaradaran01.workers.dev** (Cloudflare Workers).
+
+It's a static single-page app: `pnpm build`, then upload `dist/`.
+
+- **Drag-and-drop upload:** `public/_redirects` sends `/works`, `/works/*` and `/experience` to
+  `/spa`, a copy of `index.html` the build emits. Cloudflare rejects a rule that proxies to
+  `index.html` itself as an infinite loop. Add a line there when you add a top-level route.
+- **CLI:** `pnpm dlx wrangler deploy` reads `wrangler.jsonc`, which serves the app for every
+  unknown path.
 
 ## License
 

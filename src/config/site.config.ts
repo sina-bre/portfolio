@@ -2,6 +2,7 @@ import type { Link } from '@/types'
 
 export const siteConfig = {
   name: 'Sina Baradaran',
+  url: 'https://dev.sinabaradaran01.workers.dev',
   initials: 'SB',
   role: 'Front-End Developer',
   location: 'Mashhad, Iran',
