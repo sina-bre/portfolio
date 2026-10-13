@@ -1,0 +1,85 @@
+import type { SkillGroup } from '@/types'
+
+export const skillGroups: SkillGroup[] = [
+  {
+    id: 'core',
+    title: 'Core frontend',
+    summary: 'Typed, maintainable single-page and server-rendered applications.',
+    items: ['TypeScript', 'JavaScript (ES6+)', 'React 19', 'Next.js', 'HTML5', 'CSS3'],
+  },
+  {
+    id: 'vue',
+    title: 'Vue ecosystem',
+    summary: 'Production Vue work, from a headless CMS to an LMS.',
+    items: ['Vue 3', 'Nuxt', 'Pinia', 'Vuex', 'Quasar', 'Vuetify'],
+  },
+  {
+    id: 'state',
+    title: 'State & data',
+    summary: 'Server state, shared state and the APIs that feed them.',
+    items: ['TanStack Query', 'Redux Toolkit', 'GraphQL', 'REST', 'Axios'],
+  },
+  {
+    id: 'forms',
+    title: 'Forms & validation',
+    summary: 'Multi-step, validated forms with clear status-driven UI.',
+    items: ['React Hook Form', 'Formik', 'Zod', 'Yup'],
+  },
+  {
+    id: 'ui',
+    title: 'Styling & UI',
+    summary: 'Responsive interfaces and component libraries that stay consistent.',
+    items: ['Tailwind CSS', 'SCSS', 'CSS Modules', 'shadcn/ui', 'HeroUI', 'MUI', 'Chakra UI'],
+  },
+  {
+    id: 'motion',
+    title: 'Motion & data viz',
+    summary: 'Animation and dashboards that serve the content.',
+    items: ['GSAP', 'Framer Motion', 'TanStack Table', 'ApexCharts', 'Chart.js'],
+  },
+  {
+    id: 'localization',
+    title: 'Localization',
+    summary: 'Persian products with a mirrored interaction model, not just a dir flag.',
+    items: ['RTL layouts', 'Jalali calendars', 'date-fns-jalali'],
+  },
+  {
+    id: 'backend',
+    title: 'Backend',
+    badge: 'Full-stack range',
+    summary: 'APIs, authentication and real-time delivery behind the interface.',
+    items: [
+      'Node.js',
+      'Express',
+      'SQL Server',
+      'Stored procedures',
+      'JWT',
+      'RBAC',
+      'SSE',
+      'Socket.IO',
+      'Swagger',
+    ],
+  },
+  {
+    id: 'quality',
+    title: 'Quality & tooling',
+    summary: 'Tested, linted and reviewed code that ships predictably.',
+    items: [
+      'Jest',
+      'Testing Library',
+      'ESLint',
+      'Prettier',
+      'Git',
+      'GitHub',
+      'GitLab',
+      'Docker',
+      'Figma',
+    ],
+  },
+  {
+    id: 'ai',
+    title: 'AI & agentic tooling',
+    summary: 'Team conventions encoded as executable checklists.',
+    items: ['Claude Code', 'MCP servers', 'Custom agent skills', 'Prompt engineering'],
+  },
+]

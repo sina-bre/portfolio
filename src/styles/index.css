@@ -1,0 +1,250 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/geist';
+@import '@fontsource-variable/geist-mono';
+
+@theme {
+  --color-canvas: #0b0b0c;
+  --color-surface: #131315;
+  --color-line: #232326;
+  --color-ink: #f3f0ea;
+  --color-muted: #8f8b84;
+  --color-faint: #55534f;
+  --color-accent: #ff5b2e;
+  --color-accent-strong: #e8461b;
+
+  --font-sans: 'Geist Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Geist Mono Variable', ui-monospace, monospace;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-marquee-fast: marquee 12s linear infinite;
+  --animate-pulse-dot: pulse-dot 2s ease-in-out infinite;
+  --animate-blur-in: blur-in 900ms var(--ease-out-expo) both;
+  --animate-page-in: page-in 450ms var(--ease-out-expo) both;
+
+  @keyframes marquee {
+    to {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+
+  @keyframes pulse-dot {
+    50% {
+      opacity: 0.35;
+    }
+  }
+
+  @keyframes blur-in {
+    from {
+      opacity: 0;
+      filter: blur(12px);
+      transform: translate3d(0, -0.25em, 0);
+    }
+  }
+
+  @keyframes page-in {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 0.5rem, 0);
+    }
+  }
+}
+
+/* Fluid type scale and container, matching the reference design. */
+@utility display-h1 {
+  font-size: clamp(2.75rem, 9.5vw, 9.5rem);
+  font-weight: 600;
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+}
+
+@utility display-h2 {
+  font-size: clamp(2.1rem, 5.6vw, 5.25rem);
+  font-weight: 600;
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+}
+
+@utility display-h3 {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/* Cancels container padding so a strip can run edge to edge. */
+@utility bleed-x {
+  margin-inline: calc(-1 * clamp(1.25rem, 4vw, 3.5rem));
+}
+
+@utility container-x {
+  width: 100%;
+  max-width: 90rem;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 3.5rem);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    @apply bg-canvas font-sans text-ink selection:bg-accent selection:text-canvas;
+  }
+
+  /* Static dot grid on its own layer: no repaint while scrolling. */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image: radial-gradient(rgb(255 255 255 / 0.05) 1px, transparent 1px);
+    background-size: 28px 28px;
+    mask-image: linear-gradient(to bottom, black, transparent 90%);
+  }
+
+  [id] {
+    scroll-margin-top: 6rem;
+  }
+
+  :focus-visible {
+    @apply rounded-sm outline-2 outline-offset-4 outline-accent;
+  }
+
+  /* Set by the target cursor while it is active. */
+  .has-target-cursor,
+  .has-target-cursor * {
+    cursor: none !important;
+  }
+}
+
+@layer components {
+  /* Scroll reveal: opacity and transform only, so it stays on the compositor. */
+  [data-reveal] {
+    opacity: 0;
+    transform: translate3d(0, 1.5rem, 0);
+    transition:
+      opacity 700ms ease,
+      transform 700ms var(--ease-out-expo);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  [data-reveal][data-visible] {
+    opacity: 1;
+    transform: none;
+  }
+
+  [data-paused] * {
+    animation-play-state: paused;
+  }
+
+  /* Underline that grows from the left on hover. */
+  .underline-grow {
+    background-image: linear-gradient(currentcolor, currentcolor);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 1px;
+    transition: background-size 500ms var(--ease-out-expo);
+  }
+
+  :is(a, button):is(:hover, :focus-visible) .underline-grow,
+  .underline-grow:is(:hover, :focus-visible) {
+    background-size: 100% 1px;
+  }
+}
+
+/* Only shown where the browser can drive it from scroll (see below). */
+.scroll-progress {
+  display: none;
+}
+
+/*
+ * Words sharpen as the paragraph scrolls through the viewport. Pure CSS scroll-driven
+ * animation: no scroll listeners, and browsers without support simply show the text.
+ */
+@supports (animation-timeline: view()) {
+  .scroll-words {
+    view-timeline: --words block;
+  }
+
+  .scroll-words > span {
+    animation: word-focus linear both;
+    animation-timeline: --words;
+    animation-range: cover var(--start) cover var(--end);
+  }
+
+  /* Page reading progress: a bar that scales with the document's scroll position. */
+  .scroll-progress {
+    display: block;
+    transform-origin: left;
+    animation: scroll-progress linear both;
+    animation-timeline: scroll(root);
+  }
+
+  @keyframes scroll-progress {
+    from {
+      transform: scaleX(0);
+    }
+  }
+
+  /* Content lifts and fades as its block scrolls out of the top of the viewport. */
+  .scroll-exit {
+    animation: scroll-exit linear both;
+    animation-timeline: view();
+    animation-range: exit 0% exit 100%;
+  }
+
+  @keyframes scroll-exit {
+    to {
+      opacity: 0;
+      transform: translate3d(0, -12vh, 0) scale(0.96);
+    }
+  }
+
+  @keyframes word-focus {
+    from {
+      opacity: 0.12;
+      filter: blur(4px);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+
+  .scroll-words > span,
+  .scroll-exit {
+    animation: none !important;
+  }
+
+  .scroll-progress {
+    display: none;
+  }
+}
