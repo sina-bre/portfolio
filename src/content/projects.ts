@@ -52,6 +52,7 @@ export const projects: Project[] = [
     year: '2025 – Present',
     stack: ['React 19', 'Tailwind CSS', 'HeroUI', 'TanStack Table', 'ApexCharts'],
     scale: '55 screens',
+    url: 'https://erp.heliumpark.ir',
     summary:
       'The admin panel behind invoicing and reservations, organised into role-scoped workspaces for the teams who use it every day.',
     highlights: [
