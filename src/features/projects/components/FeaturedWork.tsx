@@ -3,6 +3,7 @@ import { ArrowLink, Reveal, Section } from '@/shared/components'
 import { pad } from '@/shared/lib/format'
 
 import { FlowingRow } from './FlowingRow'
+import { LiveProducts } from './LiveProducts'
 
 const featured = contentRepository.getFeaturedProjects()
 
@@ -32,6 +33,8 @@ export function FeaturedWork() {
           </li>
         ))}
       </ol>
+
+      <LiveProducts />
 
       <div className="mt-14 flex flex-wrap gap-x-10 gap-y-6">
         <ArrowLink to="/works">Explore all work &amp; open source</ArrowLink>

@@ -1,5 +1,7 @@
 import type { Education, Stat } from '@/types'
 
+import { projects } from './projects'
+
 export const intro =
   'I build production web applications with React, Next.js and TypeScript — booking flows, admin panels and the component systems behind them — and I write the API when the API is what is in the way.'
 
@@ -8,7 +10,7 @@ export const about =
 
 export const stats: Stat[] = [
   { value: '3+', label: 'Years in production' },
-  { value: '2', label: 'Live platforms owned' },
+  { value: String(projects.filter((project) => project.url).length), label: 'Live products' },
   { value: '131', label: 'Admin panel screens' },
   { value: '258', label: 'REST endpoints designed' },
 ]

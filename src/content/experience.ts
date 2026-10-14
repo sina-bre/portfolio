@@ -15,6 +15,7 @@ export const roles: Role[] = [
       'Delivered the full customer booking journey on heliumpark.ir: ticket and package purchase, VIP membership, events and group reservations, OTP login with automatic token refresh, and online payment with invoice tracking.',
       'Lead invoicing and reservation work across two internal admin panels totalling 131 screens and 10 role-scoped workspaces for the cashier, coffee shop, accounting, support and management reporting teams; one of them runs live as the group ERP at erp.heliumpark.ir.',
       'Designed and built a TypeScript, Express and SQL Server backend of 42 modules and 258 REST endpoints for internal task and document management — module architecture, a 50-permission RBAC model, real-time updates over server-sent events and encrypted attachments.',
+      'Built the frontend of that backend, Ezi: moved it to an entity-based React Query architecture and shipped workspace messaging with a virtualized chat, archive versions and trash, record access management and audit logs.',
     ],
     stack: [
       'Next.js',

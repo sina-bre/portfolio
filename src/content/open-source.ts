@@ -2,7 +2,14 @@ import type { Repo } from '@/types'
 
 /** Curated public repositories. Live stars and dates are merged in from the GitHub API. */
 export const openSource: Repo[] = [
-  { name: 'front-end-hand-book', description: 'A frontend handbook, written in MDX' },
+  {
+    name: 'portfolio',
+    description: 'This website: React 19, TypeScript, Tailwind v4 and CSS scroll-driven motion',
+  },
+  {
+    name: 'front-end-hand-book',
+    description: 'Bilingual frontend interview handbook in MDX, with live editable examples',
+  },
   { name: 'next-template-app', description: 'My opinionated Next.js starting point' },
   { name: 'turbo-repo-ecommerce-app', description: 'Monorepo e-commerce with Turborepo' },
   { name: 'daily-package', description: 'Small TypeScript utilities I keep reaching for' },

@@ -22,7 +22,7 @@ export function WorksPage() {
       >
         <p>
           Live platforms, internal tools and the backend behind them at Yekta Group, plus client
-          work from Asiatech, Arzesh Network and Farawin.
+          work from Novin, Asiatech, Arzesh Network and Farawin, and the projects I publish myself.
         </p>
       </PageHeader>
       <FilterableProjects projects={projects} />

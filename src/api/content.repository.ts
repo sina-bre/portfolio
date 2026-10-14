@@ -8,6 +8,8 @@ import type { Principle, Project, Role, Service, SkillGroup, Step } from '@/type
 
 export type Profile = typeof profile
 
+export type LiveProject = Project & { url: string }
+
 export interface Approach {
   principles: Principle[]
   steps: Step[]
@@ -24,6 +26,8 @@ export interface ContentRepository {
   getRoles(): Role[]
   getProjects(): Project[]
   getFeaturedProjects(): Project[]
+  /** Projects with a public URL, i.e. the ones a visitor can open. */
+  getLiveProjects(): LiveProject[]
   getProject(slug: string): Project | undefined
   getServices(): Service[]
   getSkillGroups(): SkillGroup[]
@@ -35,6 +39,7 @@ export const contentRepository: ContentRepository = {
   getRoles: () => roles,
   getProjects: () => projects,
   getFeaturedProjects: () => projects.filter((project) => project.featured),
+  getLiveProjects: () => projects.filter((project): project is LiveProject => !!project.url),
   getProject: (slug) => projects.find((project) => project.slug === slug),
   getServices: () => services,
   getSkillGroups: () => skillGroups,

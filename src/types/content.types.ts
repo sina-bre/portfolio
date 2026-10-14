@@ -21,7 +21,8 @@ export interface Role {
   stack: string[]
 }
 
-export type ProjectCategory = 'Product' | 'Internal tool' | 'Backend' | 'Client work'
+export type ProjectCategory =
+  'Product' | 'Internal tool' | 'Backend' | 'Client work' | 'Open source'
 
 export interface Project {
   slug: string
